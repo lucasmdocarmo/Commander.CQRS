@@ -26,7 +26,7 @@ namespace Commander
 
             if (service == default)
             {
-                throw new ArgumentException($"Class implementing {nameof(ICommandHandler<TRequest, TResponse>)} not found or not implemented!");
+                throw new ArgumentException($"Command implementing {nameof(ICommandHandler<TRequest, TResponse>)} not found or not implemented!");
             }
 
             return await service.Execute(request).ConfigureAwait(false);
@@ -45,7 +45,7 @@ namespace Commander
 
             if (service == default)
             {
-                throw new ArgumentException($"Class implementing {nameof(ICommandHandler<TRequest>)} not found or not implemented!");
+                throw new ArgumentException($"Command implementing {nameof(ICommandHandler<TRequest>)} not found or not implemented!");
             }
 
             return await service.Execute(request).ConfigureAwait(false);
@@ -57,7 +57,7 @@ namespace Commander
 
             if (!services.Any())
             {
-                throw new ArgumentException($"No class implementing {nameof(IEventHandler<TRequest>)} not found or not implemented!");
+                throw new ArgumentException($"No Command implementing {nameof(IEventHandler<TRequest>)} not found or not implemented!");
             }
 
             await Task.WhenAll(services.Select(service => service.Publish(notification).AsTask())).ConfigureAwait(false);

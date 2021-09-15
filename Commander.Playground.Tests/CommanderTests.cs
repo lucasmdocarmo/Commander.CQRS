@@ -32,7 +32,10 @@ namespace Commander.Playground.Tests
             };
 
             var validateCommand = command.ValidateThis();
-
+            if(!validateCommand)
+            {
+                CommandResult.IsFailed(command.Validations.Message);
+            }
             var result = _commander.Execute<AddProductCommand, Product>(command).Result;
 
             Assert.IsTrue(result.IsSuccess);

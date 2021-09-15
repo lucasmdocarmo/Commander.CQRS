@@ -13,8 +13,8 @@ namespace Commander.Playground.Tests.Contexts.Category
 
         public override bool ValidateThis()
         {
-           CommandValidation = new ProductCommandValidator().Validate(this);
-            return CommandValidation.IsSuccess;
+           Validations = new ProductCommandValidator().Validate(this);
+            return Validations.IsSuccess;
         }
     }
 }

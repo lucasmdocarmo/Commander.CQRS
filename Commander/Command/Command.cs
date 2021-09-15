@@ -11,7 +11,7 @@ namespace Commander
     public abstract class Command:ICommand
     {
         public DateTime Timestamp { get; private set; }
-        public ICommandResult CommandValidation { get; set; }
+        public ICommandResult Validations { get; set; }
 
         protected Command()
         {
