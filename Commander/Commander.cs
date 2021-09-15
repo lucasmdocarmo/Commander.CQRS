@@ -35,7 +35,7 @@ namespace Commander
             }
             catch (Exception ex)
             {
-                throw new CommandException($"An Error ocourred while  exectuingg command {nameof(ICommandHandler<TRequest, TResponse>)}", ex.InnerException);
+                throw new CommandException($"An Error ocourred while executing command {request?.GetType().Name} in handler {service?.GetType().Name}", ex.InnerException);
             }
         }
 

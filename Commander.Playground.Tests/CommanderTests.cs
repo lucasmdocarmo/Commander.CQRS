@@ -20,7 +20,9 @@ namespace Commander.Playground.Tests
         {
             var services = new ServiceCollection();
 
-            services.AddCommander(typeof(Product));
+            services.AddCommander<AddProductCommand>();
+            services.AddCommander<ProductAddedEvent>();
+            services.AddCommander<ProductDeletedEvent>();
 
             _commander = services.BuildServiceProvider().GetRequiredService<ICommander>();
         }
