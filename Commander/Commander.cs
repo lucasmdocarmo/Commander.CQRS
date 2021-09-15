@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Commander.Contracts.Result;
+using Commander.Results;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Commander
@@ -64,7 +66,7 @@ namespace Commander
             }
         }
 
-        public async ValueTask<bool> Publish<TRequest>(TRequest notification) where TRequest : Event
+        public async ValueTask<IEventResult> Publish<TRequest>(TRequest notification) where TRequest : Event
         {
             var services = _serviceProvider.GetServices<IEventHandler<TRequest>>();
 
@@ -82,7 +84,7 @@ namespace Commander
                 throw new EventException($"An Error ocourred while posting event  {nameof(IEventHandler<TRequest>)}",ex.InnerException);
             }
 
-            return await ValueTask.FromResult(true);
+            return await ValueTask.FromResult(new EventResult());
         }
 
         private async Task<ICommandResult> ValidateRequestAsync<TRequest>(TRequest request) where TRequest : Command

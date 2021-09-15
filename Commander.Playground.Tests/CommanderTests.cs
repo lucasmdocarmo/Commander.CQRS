@@ -47,7 +47,7 @@ namespace Commander.Playground.Tests
             var @event = new ProductAddedEvent("teste");
             var result = await _commander.Publish(@event).ConfigureAwait(false);
 
-            Assert.IsTrue(result);
+            Assert.IsTrue(result.IsSuccess);
         }
     }
 }

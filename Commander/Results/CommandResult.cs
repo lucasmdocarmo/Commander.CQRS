@@ -8,7 +8,7 @@ namespace Commander
 {
     public class CommandResult : ICommandResult
     {
-        protected CommandResult() => IsSuccess = true;
+        public CommandResult() => IsSuccess = true;
 
         protected CommandResult(string message, bool success)
         {

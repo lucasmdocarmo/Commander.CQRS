@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Commander.Contracts.Result;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,6 @@ namespace Commander
         /// <typeparam name="TRequest"></typeparam>
         /// <param name="notification"></param>
         /// <returns></returns>
-        ValueTask<bool> Publish<TRequest>(TRequest notification) where TRequest : Event;
+        ValueTask<IEventResult> Publish<TRequest>(TRequest notification) where TRequest : Event;
     }
 }
