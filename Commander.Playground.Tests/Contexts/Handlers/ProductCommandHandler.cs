@@ -13,6 +13,7 @@ namespace Commander.Playground.Tests
         {
             return await CommandResult<Product>.SuccessAsync(new Product());
         }
+        
     }
 }
 

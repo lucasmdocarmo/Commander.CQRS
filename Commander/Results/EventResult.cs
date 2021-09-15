@@ -12,12 +12,12 @@ namespace Commander
     {
         public EventResult() => IsSuccess = true;
 
-        protected EventResult(string message, bool success)
+        public EventResult(string message, bool success)
         {
             IsSuccess = success;
             Message = message;
         }
-        protected EventResult(string message, bool success, HttpStatusCode statusCode)
+        public EventResult(string message, bool success, HttpStatusCode statusCode)
         {
             IsSuccess = success;
             Message = message;

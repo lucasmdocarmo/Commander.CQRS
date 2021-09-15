@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Commander.Contracts.Result;
-using Commander.Results;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Commander
