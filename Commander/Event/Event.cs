@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Commander
 {
-    public abstract class Command
+    public abstract class Event
     {
         public DateTime Timestamp { get; private set; }
-        public ICommandResult Validations { get; set; }
-
-        protected Command()
+        public Guid AggreggateId { get; private set; }
+        public void SetAggreggateId(Guid id)
+        {
+            this.AggreggateId = id;
+        }
+        protected Event()
         {
             Timestamp = DateTime.Now;
         }
-
-        public abstract bool ValidateThis();
     }
 }

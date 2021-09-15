@@ -41,12 +41,12 @@ namespace Commander
             IsSuccess = success;
             Data = data;
         }
-        protected CommandResult(string message, bool success)
+        public CommandResult(string message, bool success)
         {
             IsSuccess = success;
             Message = message;
         }
-        protected CommandResult(T data, string message, bool success)
+        public CommandResult(T data, string message, bool success)
         {
             IsSuccess = success;
             Message = message;

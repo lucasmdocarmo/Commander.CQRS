@@ -1,4 +1,5 @@
 ﻿using Commander.Playground.Tests.Contexts.Category;
+using Commander.Playground.Tests.Contexts.Product.Events;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -39,6 +40,12 @@ namespace Commander.Playground.Tests
             var result = _commander.Execute<AddProductCommand, Product>(command).Result;
 
             Assert.IsTrue(result.IsSuccess);
+        }
+        [TestMethod]
+        public async Task TestProductAddEvent_ShouldReturnTre()
+        {
+            var @event = new ProductAddedEvent("teste");
+            await _commander.Publish(@event).ConfigureAwait(false);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Commander
 {
-    public abstract class CommanderValidator<T> : AbstractValidator<T> where T : ICommand
+    public abstract class CommanderValidator<T> : AbstractValidator<T> where T : Command
     {
         private string Message { get; set; }
 

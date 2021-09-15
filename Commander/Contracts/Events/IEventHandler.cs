@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Commander
 {
-    public interface IEventHandler<in TRequest> where TRequest : IEvent
+    public interface IEventHandler<in TRequest> where TRequest : Event
     {
         ValueTask Publish(TRequest request);
     }
