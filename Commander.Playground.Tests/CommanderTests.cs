@@ -45,7 +45,9 @@ namespace Commander.Playground.Tests
         public async Task TestProductAddEvent_ShouldReturnTre()
         {
             var @event = new ProductAddedEvent("teste");
-            await _commander.Publish(@event).ConfigureAwait(false);
+            var result = await _commander.Publish(@event).ConfigureAwait(false);
+
+            Assert.IsTrue(result);
         }
     }
 }

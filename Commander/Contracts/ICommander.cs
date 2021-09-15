@@ -9,7 +9,7 @@ namespace Commander
     public interface ICommander
     {
         /// <summary>
-        /// Returns an IResult of TResult where request must be an IRequest.
+        /// Returns an ICommandResult of TResult where request must be an IRequest.
         /// </summary>
         /// <typeparam name="TRequest"></typeparam>
         /// <typeparam name="TResponse"></typeparam>
