@@ -13,7 +13,7 @@ namespace Commander
 
         public Commander(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
 
-        public async ValueTask<ICommandResult<TResponse>> Execute<TRequest, TResponse>(TRequest request) where TRequest : IRequest
+        public async ValueTask<ICommandResult<TResponse>> Execute<TRequest, TResponse>(TRequest request) where TRequest : ICommand
         {
             var validator = await ValidateRequestAsync(request);
 
@@ -22,17 +22,17 @@ namespace Commander
                 return CommandResult<TResponse>.IsFailed(validator.Message);
             }
 
-            var service = _serviceProvider.GetService<IRequestHandler<TRequest, TResponse>>();
+            var service = _serviceProvider.GetService<ICommandHandler<TRequest, TResponse>>();
 
             if (service == default)
             {
-                throw new ArgumentException($"Class implementing {nameof(IRequestHandler<TRequest, TResponse>)} not found or not implemented!");
+                throw new ArgumentException($"Class implementing {nameof(ICommandHandler<TRequest, TResponse>)} not found or not implemented!");
             }
 
             return await service.Execute(request).ConfigureAwait(false);
         }
 
-        public async ValueTask<ICommandResult> Execute<TRequest>(TRequest request) where TRequest : IRequest
+        public async ValueTask<ICommandResult> Execute<TRequest>(TRequest request) where TRequest : ICommand
         {
             var validator = await ValidateRequestAsync(request);
 
@@ -41,17 +41,17 @@ namespace Commander
                 return CommandResult.IsFailed(validator.Message);
             }
 
-            var service = _serviceProvider.GetService<IRequestHandler<TRequest>>();
+            var service = _serviceProvider.GetService<ICommandHandler<TRequest>>();
 
             if (service == default)
             {
-                throw new ArgumentException($"Class implementing {nameof(IRequestHandler<TRequest>)} not found or not implemented!");
+                throw new ArgumentException($"Class implementing {nameof(ICommandHandler<TRequest>)} not found or not implemented!");
             }
 
             return await service.Execute(request).ConfigureAwait(false);
         }
 
-        public async ValueTask Publish<TRequest>(TRequest notification) where TRequest : INotification
+        public async ValueTask Publish<TRequest>(TRequest notification) where TRequest : IEvent
         {
             var services = _serviceProvider.GetServices<IEventHandler<TRequest>>();
 
@@ -62,7 +62,8 @@ namespace Commander
 
             await Task.WhenAll(services.Select(service => service.Publish(notification).AsTask())).ConfigureAwait(false);
         }
-        private async Task<ICommandResult> ValidateRequestAsync<TRequest>(TRequest request) where TRequest : IRequest
+
+        private async Task<ICommandResult> ValidateRequestAsync<TRequest>(TRequest request) where TRequest : ICommand
         {
             var validator = _serviceProvider.GetService<CommanderValidator<TRequest>>();
 

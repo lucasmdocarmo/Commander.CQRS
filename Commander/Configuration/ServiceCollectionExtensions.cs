@@ -10,7 +10,7 @@ namespace Commander
 {
     public static class ServiceCollectionExtensions
     {
-        private static bool IsRequestHandlers(Type type) => type.Is(typeof(IRequestHandler<,>)) || type.Is(typeof(IRequestHandler<>)) || type.Is(typeof(IEventHandler<>));
+        private static bool IsRequestHandlers(Type type) => type.Is(typeof(ICommandHandler<,>)) || type.Is(typeof(ICommandHandler<>)) || type.Is(typeof(IEventHandler<>));
 
         public static void AddCommander(this IServiceCollection services, Type type)
         {

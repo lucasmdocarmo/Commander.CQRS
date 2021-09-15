@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Commander.Playground.Tests
 {
-    public class ProductCommandHandler : IRequestHandler<AddProductCommand, Product>
+    public class ProductCommandHandler : ICommandHandler<AddProductCommand, Product>
     {
         public async ValueTask<ICommandResult<Product>> Execute(AddProductCommand request)
         {

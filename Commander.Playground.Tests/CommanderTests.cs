@@ -31,6 +31,8 @@ namespace Commander.Playground.Tests
                 Name = "notebook dell"
             };
 
+            var validateCommand = command.ValidateThis();
+
             var result = _commander.Execute<AddProductCommand, Product>(command).Result;
 
             Assert.IsTrue(result.IsSuccess);

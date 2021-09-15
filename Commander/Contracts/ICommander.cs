@@ -15,7 +15,7 @@ namespace Commander
         /// <typeparam name="TResponse"></typeparam>
         /// <param name="request"></param>
         /// <returns></returns>
-        ValueTask<ICommandResult<TResponse>> Execute<TRequest, TResponse>(TRequest request) where TRequest : IRequest;
+        ValueTask<ICommandResult<TResponse>> Execute<TRequest, TResponse>(TRequest request) where TRequest : ICommand;
 
         /// <summary>
         /// Returns a Value Task. For use when don't require a return.
@@ -23,7 +23,7 @@ namespace Commander
         /// <typeparam name="TRequest"></typeparam>
         /// <param name="request"></param>
         /// <returns></returns>
-        ValueTask<ICommandResult> Execute<TRequest>(TRequest request) where TRequest : IRequest;
+        ValueTask<ICommandResult> Execute<TRequest>(TRequest request) where TRequest : ICommand;
 
         /// <summary>
         /// Publish a Event for all handlers subscribed.
