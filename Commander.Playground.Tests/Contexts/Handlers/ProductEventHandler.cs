@@ -1,4 +1,5 @@
-﻿using Commander.Playground.Tests.Contexts.Product.Events;
+﻿using Commander.Contracts.Result;
+using Commander.Playground.Tests.Contexts.Product.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace Commander.Playground.Tests
 {
     public class ProductEventHandler : IEventHandler<ProductAddedEvent>
     {
-        public async ValueTask Publish(ProductAddedEvent request)
+        public async ValueTask<IEventResult> Publish(ProductAddedEvent request)
         {
-            await Task.CompletedTask.ConfigureAwait(false);
+            return await EventResult.SuccessAsync();
         }
     }
 }

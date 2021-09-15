@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Commander.Results
+namespace Commander
 {
     public class EventResult: IEventResult
     {
@@ -26,5 +26,17 @@ namespace Commander.Results
         public HttpStatusCode StatusCode { get; protected set; }
         public string Message { get; protected set; }
         public bool IsSuccess { get; protected set; }
+
+        public static IEventResult Success() => new EventResult();
+
+        public static IEventResult Success(string message) => new EventResult(message, true);
+
+        public static ValueTask<IEventResult> SuccessAsync() => ValueTask.FromResult(Success());
+
+        public static ValueTask<IEventResult> SuccessAsync(string message) => ValueTask.FromResult(Success(message));
+
+        public static IEventResult IsFailed(string message) => new EventResult(message, false);
+
+        public static ValueTask<IEventResult> FailAsync(string message) => ValueTask.FromResult(IsFailed(message));
     }
 }

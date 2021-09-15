@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Commander.Contracts.Result;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Commander
 {
     public interface IEventHandler<in TRequest> where TRequest : Event
     {
-        ValueTask Publish(TRequest request);
+        ValueTask<IEventResult> Publish(TRequest request);
     }
 }
