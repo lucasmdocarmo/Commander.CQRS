@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Commander
 {
-    public abstract class Event
+    public abstract class Event: Message
     {
-        public DateTime Timestamp { get; private set; }
         public Guid AggreggateId { get; private set; }
         public void SetAggreggateId(Guid id)
         {

@@ -12,7 +12,7 @@ namespace Commander
     {
         private static bool IsRequestHandlers(Type type) => type.Is(typeof(ICommandHandler<,>)) || type.Is(typeof(ICommandHandler<>)) || type.Is(typeof(IEventHandler<>));
 
-        public static void AddCommander<T>(this IServiceCollection services) where T: class
+        public static void AddCommander<T>(this IServiceCollection services) where T : Message
         {
             services.AddScoped<ICommander, Commander>();
             services.AddRequestHandlers(typeof(T));

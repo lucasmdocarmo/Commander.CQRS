@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Commander
 {
-    public abstract class Command
+    public abstract class Command: Message
     {
-        public DateTime Timestamp { get; private set; }
         public ICommandResult Validations { get; set; }
 
         protected Command()
