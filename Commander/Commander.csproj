@@ -13,6 +13,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />
     <PackageTags>CQRS</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

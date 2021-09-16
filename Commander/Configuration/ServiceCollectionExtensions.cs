@@ -10,23 +10,24 @@ namespace Commander
 {
     public static class ServiceCollectionExtensions
     {
-        private static bool IsRequestHandlers(Type type) => type.Is(typeof(ICommandHandler<,>)) || type.Is(typeof(ICommandHandler<>)) || type.Is(typeof(IEventHandler<>));
-
         public static void AddCommander<T>(this IServiceCollection services) where T : Message
         {
             services.AddScoped<ICommander, Commander>();
-            services.AddRequestHandlers(typeof(T));
-            services.AddValidators(typeof(T));
+            services.AddCommanderHandlers(typeof(T));
+            services.AddCommanderValidation(typeof(T));
         }
 
-        private static void AddRequestHandlers(this IServiceCollection services, Type type) => type.Assembly
+        private static void AddCommanderHandlers(this IServiceCollection services, Type type) => type.Assembly
             .GetTypes()
-            .Where(type => type.GetInterfaces().Any(IsRequestHandlers)).ToList()
-            .ForEach(type => type.GetInterfaces().Where(IsRequestHandlers).ToList().ForEach(@interface => services.TryAddScoped(@interface, type)));
+            .Where(type => type.GetInterfaces().Any(CheckHandlers)).ToList()
+            .ForEach(type => type.GetInterfaces().Where(CheckHandlers).ToList().ForEach(@interface => services.TryAddScoped(@interface, type)));
 
-        private static void AddValidators(this IServiceCollection services, Type type) => type.Assembly
+        private static void AddCommanderValidation(this IServiceCollection services, Type type) => type.Assembly
             .GetTypes()
             .Where(type => type.BaseType.Is(typeof(CommanderValidator<>))).ToList()
             .ForEach(type => services.TryAddScoped(type.BaseType, type));
+
+        private static bool CheckHandlers(Type type) => type.Is(typeof(ICommandHandler<,>)) || type.Is(typeof(ICommandHandler<>)) || type.Is(typeof(IEventHandler<>))
+            || type.Is(typeof(IQueryHandler<,>)) || type.Is(typeof(IQueryHandler<>));
     }
 }

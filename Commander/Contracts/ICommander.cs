@@ -1,5 +1,4 @@
-﻿using Commander.Contracts.Result;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,5 +34,15 @@ namespace Commander
         /// <param name="notification"></param>
         /// <returns></returns>
         ValueTask<IEventResult> Publish<TRequest>(TRequest notification) where TRequest : Event;
+
+        /// <summary>
+        /// Returns an IQueryResult of TResult where request must be an Query.
+        /// </summary>
+        /// <typeparam name="TRequest"></typeparam>
+        /// <typeparam name="TResponse"></typeparam>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        /// <throws>Command Exception</throws>
+        ValueTask<IQueryResult<TResponse>> ExecuteQuery<TRequest, TResponse>(TRequest request) where TRequest : Query where TResponse: IQueryOutput;
     }
 }

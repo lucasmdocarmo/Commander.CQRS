@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Commander.Contracts.Result;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Commander
@@ -36,6 +35,24 @@ namespace Commander
             catch (Exception ex)
             {
                 throw new CommandException($"An Error ocourred while executing command {request?.GetType().Name} in handler {service?.GetType().Name}", ex.InnerException);
+            }
+        }
+        public async ValueTask<IQueryResult<TResponse>> ExecuteQuery<TRequest, TResponse>(TRequest request) where TRequest : Query 
+                                                                                                            where TResponse: IQueryOutput
+        {
+            var service = _serviceProvider.GetService<IQueryHandler<TRequest, TResponse>>();
+
+            if (service == default)
+            {
+                throw new CommandException($"Command {nameof(IQueryHandler<TRequest, TResponse>)} not found or not implemented!");
+            }
+            try
+            {
+                return await service.ExecuteQuery(request).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                throw new CommandException($"An Error ocourred while executing query {request?.GetType().Name} in handler {service?.GetType().Name}", ex.InnerException);
             }
         }
 

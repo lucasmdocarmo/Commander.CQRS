@@ -1,5 +1,4 @@
-﻿using Commander.Contracts.Result;
-using Commander.Playground.Tests.Contexts.Handlers;
+﻿using Commander.Playground.Tests.Contexts.Handlers;
 using Commander.Playground.Tests.Contexts.Product.Events;
 using System;
 using System.Collections.Generic;
