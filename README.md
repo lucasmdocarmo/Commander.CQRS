@@ -1,5 +1,5 @@
 # Commander.CQRS
-Simple Library for easy-to-use implementation of CQRS Pattern using .NET Application dev
+Simple Library for easy-to-use implementation of CQRS Pattern using .NET Application development
 
 Install-Package CommanderCQRS -Version 1.0.2
 OR
