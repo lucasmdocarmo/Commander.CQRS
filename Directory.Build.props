@@ -1,0 +1,60 @@
+<Project>
+
+  <!--
+    Settings shared by every project in the repository.
+    Project-specific overrides live in each .csproj.
+  -->
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <AnalysisMode>Recommended</AnalysisMode>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+
+    <!-- Library identity (overridable in csproj) -->
+    <Authors>Lucas Mariano</Authors>
+    <Company>Lucas Mariano</Company>
+    <Product>Commander.CQRS</Product>
+    <Copyright>Copyright (c) Lucas Mariano</Copyright>
+    <RepositoryUrl>https://github.com/lucasmdocarmo/Commander.CQRS</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/lucasmdocarmo/Commander.CQRS</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+    <!-- Determinism / reproducible builds for shipped packages -->
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <!-- Suppress XML doc warnings for unrelated members; we still generate the doc file -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <!-- Analyzers applied to every project in the repo -->
+  <ItemGroup>
+    <PackageReference Include="Roslynator.Analyzers" PrivateAssets="All" />
+    <PackageReference Include="Roslynator.Formatting.Analyzers" PrivateAssets="All" />
+    <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" PrivateAssets="All" />
+  </ItemGroup>
+
+  <!-- SourceLink + PublicAPI analyzer for every shippable project -->
+  <ItemGroup Condition="'$(IsPackable)' == 'true' OR '$(GeneratePackageOnBuild)' == 'true'">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup Condition="('$(IsPackable)' == 'true' OR '$(GeneratePackageOnBuild)' == 'true') AND Exists('$(MSBuildProjectDirectory)\PublicAPI.Shipped.txt')">
+    <AdditionalFiles Include="PublicAPI.Shipped.txt" />
+    <AdditionalFiles Include="PublicAPI.Unshipped.txt" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+name: Feature request
+description: Propose a new feature or enhancement
+labels: [enhancement, triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution / API sketch
+      render: csharp
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context (links, prior art, MediatR equivalents, etc.)

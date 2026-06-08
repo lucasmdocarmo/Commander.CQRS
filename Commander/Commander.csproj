@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <RootNamespace>Commander</RootNamespace>
+    <AssemblyName>Commander</AssemblyName>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IsTrimmable>true</IsTrimmable>
+    <IsAotCompatible>true</IsAotCompatible>
+
+    <!-- NuGet metadata -->
+    <Description>High-performance CQRS / Mediator library for .NET. Pipeline behaviors, streaming queries, configurable notification publishers, cancellation support, and AOT-friendly cached dispatch.</Description>
+    <PackageId>CommanderCQRS</PackageId>
+    <PackageTags>cqrs;mediator;mediatr;dispatcher;pipeline;commands;queries;events</PackageTags>
+    <Version>2.0.0</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png" Pack="true" PackagePath="" />
+    <None Include="..\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <!-- Source generator: build dependency, but ship the generator DLL inside the NuGet under analyzers/ -->
+  <ItemGroup>
+    <ProjectReference Include="..\Commander.SourceGenerator\Commander.SourceGenerator.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all" />
+  </ItemGroup>
+
+  <Target Name="PackSourceGenerator" AfterTargets="ResolveProjectReferences" BeforeTargets="GenerateNuspec">
+    <ItemGroup>
+      <None Include="$(MSBuildThisFileDirectory)..\Commander.SourceGenerator\bin\$(Configuration)\netstandard2.0\Commander.SourceGenerator.dll"
+            Pack="true"
+            PackagePath="analyzers/dotnet/cs"
+            Visible="false" />
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Commander.Playground.Tests" />
+    <InternalsVisibleTo Include="Commander.Benchmarks" />
+  </ItemGroup>
+
+</Project>

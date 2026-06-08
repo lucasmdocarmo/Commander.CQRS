@@ -1,0 +1,147 @@
+# =====================================================================
+# .NET / Visual Studio / Rider .gitignore — based on the official
+# Microsoft template, trimmed for this repository.
+# =====================================================================
+
+# ---- User-specific files ----
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Mono auto-generated
+mono_crash.*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.tlog
+*.lastbuildstate
+*.unsuccessfulbuild
+*.cache
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio profiler
+*.svclog
+*.scc
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+*.mdb
+*.opendb
+*.binlog
+
+# JetBrains Rider / ReSharper
+.idea/
+*.DotSettings.user
+_ReSharper*/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.iobj
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# MSBuild Binary and Structured Log
+*.binlog
+
+# Test results / coverage
+[Tt]est[Rr]esult*/
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+*.cobertura.xml
+*.opencover.xml
+*.lcov
+
+# Code analysis
+.sonarqube/
+.qodana/
+
+# Visual Studio cache files
+*.[Cc]ache
+!?*.[Cc]ache/
+
+# JetBrains dotCover
+*.dotCover
+
+# Backup files
+*.bak
+*.swp
+*~
+*.orig
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Local environment
+.env
+.env.local
+*.env.*.local
+
+# BenchmarkDotNet output
+BenchmarkDotNet.Artifacts/

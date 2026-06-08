@@ -1,0 +1,55 @@
+name: Bug report
+description: Something is wrong in Commander.CQRS
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. Please complete every section so we can reproduce quickly.
+
+  - type: input
+    id: version
+    attributes:
+      label: Commander.CQRS version
+      placeholder: e.g. 2.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: framework
+    attributes:
+      label: Target framework
+      placeholder: e.g. net10.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: dotnet-info
+    attributes:
+      label: dotnet --info
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal repro
+      description: Smallest possible code sample that reproduces the issue.
+      render: csharp
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior (include exception/stack trace if any)
+    validations:
+      required: true

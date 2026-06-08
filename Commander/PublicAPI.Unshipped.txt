@@ -1,0 +1,167 @@
+﻿#nullable enable
+~override Commander.NotificationHandlerExecutor.Equals(object obj) -> bool
+~override Commander.NotificationHandlerExecutor.ToString() -> string
+Commander.Command
+Commander.Command.Command() -> void
+Commander.Command.Validations.get -> Commander.ICommandResult?
+Commander.Command.Validations.set -> void
+Commander.CommanderServiceConfiguration
+Commander.CommanderServiceConfiguration.AddOpenBehavior(System.Type! openGenericBehavior) -> Commander.CommanderServiceConfiguration!
+Commander.CommanderServiceConfiguration.AssembliesToRegister.get -> System.Collections.Generic.List<System.Reflection.Assembly!>!
+Commander.CommanderServiceConfiguration.BehaviorsToRegister.get -> System.Collections.Generic.List<System.Type!>!
+Commander.CommanderServiceConfiguration.CommanderServiceConfiguration() -> void
+Commander.CommanderServiceConfiguration.Lifetime.get -> Microsoft.Extensions.DependencyInjection.ServiceLifetime
+Commander.CommanderServiceConfiguration.Lifetime.set -> void
+Commander.CommanderServiceConfiguration.NotificationPublisherType.get -> System.Type!
+Commander.CommanderServiceConfiguration.NotificationPublisherType.set -> void
+Commander.CommanderServiceConfiguration.RegisterServicesFromAssemblies(params System.Reflection.Assembly![]! assemblies) -> Commander.CommanderServiceConfiguration!
+Commander.CommanderServiceConfiguration.RegisterServicesFromAssembly(System.Reflection.Assembly! assembly) -> Commander.CommanderServiceConfiguration!
+Commander.CommanderServiceConfiguration.RegisterServicesFromAssemblyContaining(System.Type! markerType) -> Commander.CommanderServiceConfiguration!
+Commander.CommanderServiceConfiguration.RegisterServicesFromAssemblyContaining<TMarker>() -> Commander.CommanderServiceConfiguration!
+Commander.CommanderServiceConfiguration.UseNotificationPublisher<TPublisher>() -> Commander.CommanderServiceConfiguration!
+Commander.CommandException
+Commander.CommandException.CommandException() -> void
+Commander.CommandException.CommandException(string! originalMessage) -> void
+Commander.CommandException.CommandException(string! originalMessage, System.Exception? originalException) -> void
+Commander.CommandException.CommandException(string! originalMessage, System.Exception? originalException, System.Net.HttpStatusCode responseCode) -> void
+Commander.CommandException.OriginalMessage.get -> string!
+Commander.CommandException.ResponseCode.get -> System.Net.HttpStatusCode
+Commander.CommandException.ResponseCode.init -> void
+Commander.CommandResult
+Commander.CommandResult.CommandResult() -> void
+Commander.CommandResult.CommandResult(string? message, bool success) -> void
+Commander.CommandResult.IsSuccess.get -> bool
+Commander.CommandResult.IsSuccess.set -> void
+Commander.CommandResult.Message.get -> string?
+Commander.CommandResult.Message.set -> void
+Commander.CommandResult<T>
+Commander.CommandResult<T>.Data.get -> T?
+Commander.Event
+Commander.Event.AggregateId.get -> System.Guid
+Commander.Event.Event() -> void
+Commander.Event.SetAggregateId(System.Guid id) -> void
+Commander.EventException
+Commander.EventException.EventException() -> void
+Commander.EventException.EventException(string! originalMessage) -> void
+Commander.EventException.EventException(string! originalMessage, System.Exception? originalException) -> void
+Commander.EventException.EventException(string! originalMessage, System.Exception? originalException, System.Net.HttpStatusCode responseCode) -> void
+Commander.EventException.OriginalMessage.get -> string!
+Commander.EventException.ResponseCode.get -> System.Net.HttpStatusCode
+Commander.EventException.ResponseCode.init -> void
+Commander.EventResult
+Commander.EventResult.EventResult() -> void
+Commander.EventResult.EventResult(string? message, bool success) -> void
+Commander.EventResult.EventResult(string? message, bool success, System.Net.HttpStatusCode statusCode) -> void
+Commander.EventResult.IsSuccess.get -> bool
+Commander.EventResult.Message.get -> string?
+Commander.EventResult.StatusCode.get -> System.Net.HttpStatusCode
+Commander.ICommander
+Commander.ICommandHandler<TRequest, TResponse>
+Commander.ICommandHandler<TRequest, TResponse>.Execute(TRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult<TResponse>!>
+Commander.ICommandHandler<TRequest>
+Commander.ICommandHandler<TRequest>.Execute(TRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult!>
+Commander.ICommandResult
+Commander.ICommandResult.IsSuccess.get -> bool
+Commander.ICommandResult.Message.get -> string?
+Commander.ICommandResult<T>
+Commander.ICommandResult<T>.Data.get -> T?
+Commander.ICommandValidator<TRequest>
+Commander.ICommandValidator<TRequest>.ValidateAsync(TRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult!>
+Commander.IEventHandler<TRequest>
+Commander.IEventHandler<TRequest>.Publish(TRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Commander.IEventResult!>
+Commander.IEventResult
+Commander.IEventResult.IsSuccess.get -> bool
+Commander.IEventResult.Message.get -> string?
+Commander.IEventResult.StatusCode.get -> System.Net.HttpStatusCode
+Commander.INotificationPublisher
+Commander.INotificationPublisher.Publish(System.Collections.Generic.IReadOnlyList<Commander.NotificationHandlerExecutor>! handlers, Commander.Event! notification, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask
+Commander.Internal.ForeachAwaitPublisher
+Commander.Internal.ForeachAwaitPublisher.ForeachAwaitPublisher() -> void
+Commander.Internal.ForeachAwaitPublisher.Publish(System.Collections.Generic.IReadOnlyList<Commander.NotificationHandlerExecutor>! handlers, Commander.Event! notification, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask
+Commander.Internal.TaskWhenAllPublisher
+Commander.Internal.TaskWhenAllPublisher.Publish(System.Collections.Generic.IReadOnlyList<Commander.NotificationHandlerExecutor>! handlers, Commander.Event! notification, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask
+Commander.Internal.TaskWhenAllPublisher.TaskWhenAllPublisher() -> void
+Commander.IPipelineBehavior<TRequest, TResponse>
+Commander.IPipelineBehavior<TRequest, TResponse>.Handle(TRequest! request, Commander.RequestHandlerDelegate<TResponse>! next, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask<TResponse>
+Commander.IPublisher
+Commander.IPublisher.Publish<TRequest>(TRequest! notification, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Commander.IEventResult!>
+Commander.IQueryHandler<TRequest, TResponse>
+Commander.IQueryHandler<TRequest, TResponse>.ExecuteQuery(TRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Commander.IQueryResult<TResponse>!>
+Commander.IQueryOutput
+Commander.IQueryResult
+Commander.IQueryResult.IsSuccess.get -> bool
+Commander.IQueryResult.Message.get -> string?
+Commander.IQueryResult.StatusCode.get -> System.Net.HttpStatusCode
+Commander.IQueryResult<T>
+Commander.IQueryResult<T>.Data.get -> T?
+Commander.ISender
+Commander.ISender.Execute<TRequest, TResponse>(TRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult<TResponse>!>
+Commander.ISender.Execute<TRequest>(TRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult!>
+Commander.ISender.ExecuteQuery<TRequest, TResponse>(TRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Commander.IQueryResult<TResponse>!>
+Commander.ISender.Stream<TRequest, TResponse>(TRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<TResponse>!
+Commander.IStreamPipelineBehavior<TRequest, TResponse>
+Commander.IStreamPipelineBehavior<TRequest, TResponse>.Handle(TRequest! request, Commander.StreamHandlerDelegate<TResponse>! next, System.Threading.CancellationToken cancellationToken) -> System.Collections.Generic.IAsyncEnumerable<TResponse>!
+Commander.IStreamQueryHandler<TRequest, TResponse>
+Commander.IStreamQueryHandler<TRequest, TResponse>.Stream(TRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<TResponse>!
+Commander.Message
+Commander.Message.Message() -> void
+Commander.Message.Timestamp.get -> System.DateTime
+Commander.Message.Timestamp.init -> void
+Commander.NotificationHandlerExecutor
+Commander.NotificationHandlerExecutor.Deconstruct(out object! HandlerInstance, out System.Func<Commander.Event!, System.Threading.CancellationToken, System.Threading.Tasks.ValueTask>! HandlerCallback) -> void
+Commander.NotificationHandlerExecutor.Equals(Commander.NotificationHandlerExecutor other) -> bool
+Commander.NotificationHandlerExecutor.HandlerCallback.get -> System.Func<Commander.Event!, System.Threading.CancellationToken, System.Threading.Tasks.ValueTask>!
+Commander.NotificationHandlerExecutor.HandlerCallback.init -> void
+Commander.NotificationHandlerExecutor.HandlerInstance.get -> object!
+Commander.NotificationHandlerExecutor.HandlerInstance.init -> void
+Commander.NotificationHandlerExecutor.NotificationHandlerExecutor() -> void
+Commander.NotificationHandlerExecutor.NotificationHandlerExecutor(object! HandlerInstance, System.Func<Commander.Event!, System.Threading.CancellationToken, System.Threading.Tasks.ValueTask>! HandlerCallback) -> void
+Commander.Query
+Commander.Query.Query() -> void
+Commander.Query.Validations.get -> Commander.IQueryResult?
+Commander.Query.Validations.set -> void
+Commander.QueryResult<T>
+Commander.QueryResult<T>.Data.get -> T?
+Commander.QueryResult<T>.IsSuccess.get -> bool
+Commander.QueryResult<T>.Message.get -> string?
+Commander.QueryResult<T>.StatusCode.get -> System.Net.HttpStatusCode
+Commander.RequestHandlerDelegate<TResponse>
+Commander.ServiceCollectionExtensions
+Commander.StreamHandlerDelegate<TResponse>
+Commander.Validation.ValidationPipelineBehavior<TRequest, TResponse>
+Commander.Validation.ValidationPipelineBehavior<TRequest, TResponse>.Handle(TRequest! request, Commander.RequestHandlerDelegate<TResponse>! next, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask<TResponse>
+Commander.Validation.ValidationPipelineBehavior<TRequest, TResponse>.ValidationPipelineBehavior(System.Collections.Generic.IEnumerable<Commander.ICommandValidator<TRequest!>!>! validators) -> void
+override Commander.NotificationHandlerExecutor.GetHashCode() -> int
+static Commander.CommandResult.FailAsync(string! message) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult!>
+static Commander.CommandResult.IsFailed(string! message) -> Commander.ICommandResult!
+static Commander.CommandResult.Success() -> Commander.ICommandResult!
+static Commander.CommandResult.Success(string! message) -> Commander.ICommandResult!
+static Commander.CommandResult.SuccessAsync() -> System.Threading.Tasks.ValueTask<Commander.ICommandResult!>
+static Commander.CommandResult.SuccessAsync(string! message) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult!>
+static Commander.CommandResult<T>.FailAsync(string! message) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult<T>!>
+static Commander.CommandResult<T>.IsFailed(string! message) -> Commander.ICommandResult<T>!
+static Commander.CommandResult<T>.Success(T data) -> Commander.ICommandResult<T>!
+static Commander.CommandResult<T>.Success(T data, string! message) -> Commander.ICommandResult<T>!
+static Commander.CommandResult<T>.SuccessAsync(T data) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult<T>!>
+static Commander.CommandResult<T>.SuccessAsync(T data, string! message) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult<T>!>
+static Commander.EventResult.FailAsync(string! message) -> System.Threading.Tasks.ValueTask<Commander.IEventResult!>
+static Commander.EventResult.IsFailed(string! message) -> Commander.IEventResult!
+static Commander.EventResult.Success() -> Commander.IEventResult!
+static Commander.EventResult.Success(string! message) -> Commander.IEventResult!
+static Commander.EventResult.SuccessAsync() -> System.Threading.Tasks.ValueTask<Commander.IEventResult!>
+static Commander.EventResult.SuccessAsync(string! message) -> System.Threading.Tasks.ValueTask<Commander.IEventResult!>
+static Commander.NotificationHandlerExecutor.operator !=(Commander.NotificationHandlerExecutor left, Commander.NotificationHandlerExecutor right) -> bool
+static Commander.NotificationHandlerExecutor.operator ==(Commander.NotificationHandlerExecutor left, Commander.NotificationHandlerExecutor right) -> bool
+static Commander.QueryResult<T>.Failed(string! message, System.Net.HttpStatusCode statusCode = System.Net.HttpStatusCode.BadRequest) -> Commander.IQueryResult<T>!
+static Commander.QueryResult<T>.FailedAsync(string! message, System.Net.HttpStatusCode statusCode = System.Net.HttpStatusCode.BadRequest) -> System.Threading.Tasks.ValueTask<Commander.IQueryResult<T>!>
+static Commander.QueryResult<T>.Success(T data) -> Commander.IQueryResult<T>!
+static Commander.QueryResult<T>.Success(T data, string! message) -> Commander.IQueryResult<T>!
+static Commander.QueryResult<T>.Success(T data, string! message, System.Net.HttpStatusCode statusCode) -> Commander.IQueryResult<T>!
+static Commander.QueryResult<T>.SuccessAsync(T data) -> System.Threading.Tasks.ValueTask<Commander.IQueryResult<T>!>
+static Commander.QueryResult<T>.SuccessAsync(T data, string! message) -> System.Threading.Tasks.ValueTask<Commander.IQueryResult<T>!>
+static Commander.ServiceCollectionExtensions.AddCommander(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, System.Action<Commander.CommanderServiceConfiguration!>! configure) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Commander.ServiceCollectionExtensions.AddCommander<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+virtual Commander.Command.ValidateThis() -> bool
+virtual Commander.Query.ValidateThis() -> bool
+virtual Commander.RequestHandlerDelegate<TResponse>.Invoke(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask<TResponse>
+virtual Commander.StreamHandlerDelegate<TResponse>.Invoke(System.Threading.CancellationToken cancellationToken) -> System.Collections.Generic.IAsyncEnumerable<TResponse>!

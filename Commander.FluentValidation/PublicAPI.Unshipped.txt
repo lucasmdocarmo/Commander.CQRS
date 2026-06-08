@@ -1,0 +1,8 @@
+﻿#nullable enable
+Commander.FluentValidation.CommanderFluentValidationExtensions
+Commander.FluentValidation.CommanderValidator<T>
+Commander.FluentValidation.CommanderValidator<T>.CommanderValidator() -> void
+Commander.FluentValidation.CommanderValidator<T>.CustomMessage(string! message) -> void
+Commander.FluentValidation.CommanderValidator<T>.Validate(T! instance) -> Commander.ICommandResult!
+Commander.FluentValidation.CommanderValidator<T>.ValidateAsync(T! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Commander.ICommandResult!>
+static Commander.FluentValidation.CommanderFluentValidationExtensions.AddFluentValidation(this Commander.CommanderServiceConfiguration! cfg) -> Commander.CommanderServiceConfiguration!

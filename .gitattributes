@@ -1,0 +1,38 @@
+# Auto-detect text files and normalize line endings to LF in the repo
+* text=auto eol=lf
+
+# Source code — always LF
+*.cs               text eol=lf diff=csharp
+*.csproj           text eol=lf
+*.sln              text eol=lf
+*.props            text eol=lf
+*.targets          text eol=lf
+*.json             text eol=lf
+*.yml              text eol=lf
+*.yaml             text eol=lf
+*.md               text eol=lf
+*.config           text eol=lf
+*.editorconfig     text eol=lf
+
+# Windows-only files keep CRLF
+*.bat              text eol=crlf
+*.cmd              text eol=crlf
+*.ps1              text eol=crlf
+
+# Binary
+*.png              binary
+*.jpg              binary
+*.jpeg             binary
+*.gif              binary
+*.ico              binary
+*.snk              binary
+*.pfx              binary
+*.dll              binary
+*.exe              binary
+*.pdb              binary
+*.nupkg            binary
+*.snupkg           binary
+
+# GitHub linguist
+*.cs               linguist-language=C#
+docs/*             linguist-documentation
