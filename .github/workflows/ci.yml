@@ -90,8 +90,15 @@ jobs:
       - name: Restore
         run: dotnet restore
 
-      - name: Pack
-        run: dotnet pack Commander/Commander.csproj Commander.FluentValidation/Commander.FluentValidation.csproj --configuration Release --no-restore --output ./artifacts
+      # `dotnet pack` only accepts a single project, so we pack each library separately.
+      - name: Build (so pack can use --no-build)
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Pack Commander
+        run: dotnet pack Commander/Commander.csproj --configuration Release --no-build --output ./artifacts
+
+      - name: Pack Commander.FluentValidation
+        run: dotnet pack Commander.FluentValidation/Commander.FluentValidation.csproj --configuration Release --no-build --output ./artifacts
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
